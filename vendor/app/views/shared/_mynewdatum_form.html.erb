@@ -1,0 +1,36 @@
+<%= form_for(@mynewdatum) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label "Genus" %>
+    <%= f.text_field :Genus %>
+
+    <%= f.label "Species" %>
+    <%= f.text_field :Species %>
+
+    <%= f.label "Strain" %>
+    <%= f.text_field :strain %>
+
+    <%= f.label "Experiment title" %>
+    <%= f.text_field :title %>
+
+    <%= f.label "Reference" %>
+    <%= f.text_field :ref %>
+
+
+    <%= f.label "Short description" %>
+    <%= f.text_area :descrip  %>
+    
+
+
+
+</div>
+
+  
+
+
+
+  
+  <%= f.submit "Create metadata", class: "btn btn-smbtn-primary" %>
+<% end %>
+
+ <%= render 'shared/second_form'%>

@@ -1,0 +1,36 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+  <div class="span8">
+    <% if @user.microposts.any? %>
+      <h3>Experiments(<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        
+        <table class="table table-striped table-bordered table-condensed">                         
+  <tr>                          
+    <th>contenta</th>
+    <th>contentb</th>
+    <th>user</th>
+  </tr>
+<% @mynewdata.each do |mynewdata| %>       
+  <tr>
+    <td><%= mynewdata.contenta %></td>  
+    <td><%= mynewdata.contentb %></td>
+    <td><%= mynewdata.user.name %></td>  
+  </tr>
+<% end %>                        
+</table> 
+      </ol>
+      <!--<%= will_paginate @microposts %>
+      <%= will_paginate @mynewdata %>-->
+    <% end %>
+    
+  </div>

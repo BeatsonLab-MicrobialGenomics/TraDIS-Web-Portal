@@ -1,0 +1,19 @@
+<!-- <li>
+  <span class="contenta"><%= mynewdatum.contenta %></span>
+  <span class="contenta"><%= mynewdatum.contentb %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(mynewdatum.created_at) %> ago.
+  </span>
+</li> -->
+
+<li>
+  <span class="content"><%= mynewdatum.title %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(mynewdatum.created_at) %> ago.
+  </span>
+  <% if current_user?(mynewdatum.user) %>
+    <%= link_to "delete", mynewdatum, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: mynewdatum.title %>
+  <% end %>
+</li>

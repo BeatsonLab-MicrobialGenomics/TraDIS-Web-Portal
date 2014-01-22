@@ -1,0 +1,50 @@
+<body>
+  <div class="center jumbotron">
+  <h1>SocGen: Social Network Genomics</h1>
+
+  <h2>
+    TraDIS Web Portal
+  </h2>
+
+  <%= link_to "Sign up to view, upload or download data now!", signup_path, class: "btn btn-sm btn-primary" %>
+</div>
+
+
+<hr>
+
+
+   <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mynewdata">                         
+  <thead>
+  <tr>                          
+    <th>Genus</th>
+    <th>Species</th>
+    <th>Strain</th>
+    <th>Experiment Title</th>
+    <th>Experiment Description</th>
+    <th>Reference</th>
+    <th>Submitted on</th>
+    <th>Uploaded by</th>
+    <th>Show data</th>
+
+  </tr>
+</thead>
+<tbody>
+<% @mynewdata.each do |mynewdata| %>       
+  <tr>
+    <td><i><%= mynewdata.Genus %></i></td>  
+    <td><i><%= mynewdata.Species %></i></td>
+    <td><%= mynewdata.strain %></td>
+    <td><%= mynewdata.title %></td>
+    <td><%= mynewdata.descrip %></td>
+    <td><%= mynewdata.ref %></td> 
+    <td><%= mynewdata.created_at %></td> 
+    <td><%= mynewdata.user.name %></td>
+    <td><%= link_to "Show data", experiments_path(:exp_no=>mynewdata.id),
+                                class: "btn btn-small btn-primary" %></td> 
+  </tr>
+<% end %>
+</table> 
+</tbody>
+  </body>    
+   
+ 

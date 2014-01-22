@@ -1,0 +1,92 @@
+SocGen: TraDIS webportal by Stephen Fletcher
+
+
+
+
+== README
+
+#     Copyright 2014 Stephen Fletcher Licensed under the
+#     Educational Community License, Version 2.0 (the "License"); you may
+#     not use this file except in compliance with the License. You may
+#     obtain a copy of the License at
+#
+#      http://www.osedu.org/licenses/ECL-2.0
+#
+#     Unless required by applicable law or agreed to in writing,
+#     software distributed under the License is distributed on an "AS IS"
+#     BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+#     or implied. See the License for the specific language governing
+#     permissions and limitations under the License.
+
+
+
+SocGen1.0 Install Notes - by Stephen Fletcher
+
+Guest system: Ubuntu 12.04.1 LTS (GNU/Linux 3.2.0-32-generic x86_64) VM 
+Host system: OS X 10.9 Mavericks
+
+Update:
+  sudo apt-get update
+
+Install RVM:
+  curl -L get.rvm.io | bash -s stable
+  source /home/vagrant/.rvm/scripts/rvm
+  rvm requirements
+
+Install Ruby 2.0.0:
+  rvm install 2.0.0
+  rvm use 2.0.0 --default
+
+Install Rails:
+  gem install rails
+
+Install Passenger:
+  gem install passenger
+
+Install nodejs:
+  sudo apt-get install nodejs 
+
+Install postgresql:
+  sudo apt-get install postgresql
+  sudo apt-get install libpq-dev
+
+Install git:
+  sudo apt-get install git
+
+Install Imagemagick:
+  sudo apt-get install imagemagick --fix-missing
+
+Install SocGen
+  git clone https://github.com/sfletc/soc_gen_1.0.git
+  cd soc_gen1.0
+  bundle install
+  sudo nano config/database.yml
+        
+***
+add username to production e.g.
+production:
+          		adapter: postgresql
+          		database: db/database_prod
+          		pool: 5
+          		timeout: 5000
+          		username: USER
+***
+        
+  sudo -su postgres
+  createuser USER    
+  exit
+  RAILS_ENV=production rake db:create
+  RAILS_ENV=production rake db:migrate
+  passenger start -daemonize
+        
+        
+NOTES:
+If there's an SSL issue, comment config.force_ssl out :
+        
+    /config/environments/production.rb
+        		
+	config.force_ssl = true
+to:
+	#config.force_ssl = true
+ 
+<tt>rake doc:app</tt>.

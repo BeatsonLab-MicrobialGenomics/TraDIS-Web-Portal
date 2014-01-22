@@ -1,0 +1,6 @@
+<%= form_tag import_experiment_data_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Submit experimental data (CSV)", class: "btn btn-smbtn-primary" %>
+    
+    
+<% end %>
