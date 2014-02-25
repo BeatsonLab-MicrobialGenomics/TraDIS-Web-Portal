@@ -28,12 +28,12 @@
       <% @mynewdata.each do |mynewdata| %>       
       <tr>
         <td><%= mynewdata.id %></td>
-        <td><i><%= mynewdata.Genus %></i></td>  
-        <td><i><%= mynewdata.Species %></i></td>
-        <td><%= mynewdata.strain %></td>
-        <td><%= mynewdata.title %></td>
-        <td><%= mynewdata.descrip %></td>
-        <td><%= mynewdata.ref %></td> 
+        <td><i><%= best_in_place mynewdata, :Genus %></i></td>  
+        <td><i><%= best_in_place mynewdata, :Species %></i></td>
+        <td><%= best_in_place mynewdata, :strain %></td>
+        <td><%= best_in_place mynewdata, :title %></td>
+        <td><%= best_in_place mynewdata, :descrip %></td>
+        <td><%= best_in_place mynewdata, :ref %></td> 
         <td><%= mynewdata.created_at %></td> 
         <td><%= mynewdata.user.name %></td>
         <td><%= link_to "Show data", experiments_path(:exp_no=>mynewdata.id),

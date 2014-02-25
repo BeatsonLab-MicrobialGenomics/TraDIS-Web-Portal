@@ -6,6 +6,19 @@ class MynewdataController < PagesController
     
   end
   
+  def update
+    @mynewdatum=current_user.mynewdata.find(params[:id])
+    respond_to do |format|
+      if @mynewdatum.update(mynewdatum_params)
+        format.html { redirect_to @mynewdatum, notice: 'Experiment metadata was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @mynewdatum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def create
     
     @mynewdatum = current_user.mynewdata.build(mynewdatum_params)
