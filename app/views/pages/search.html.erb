@@ -1,8 +1,10 @@
 <% provide(:title, 'Search Sys.ID') %>
+<br>
 <h3>Search by Sys.ID across all experiments</h3>
+<br>
 <%= form_tag(experiments_path, :method => "get", id: "search-form") do %>
   <p>
-    <%= text_field_tag :search, params[:search], :placeholder => "Sys.ID" %>
+    <%= text_field_tag :search, params[:search], :placeholder => "Sys.ID", class: 'input-large' %><br>
     <%= submit_tag "Search" %>
   </p>
 <% end %>
